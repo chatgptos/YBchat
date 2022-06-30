@@ -8,6 +8,12 @@ use app\common\controller\Frontend;
 use think\exception\ValidateException;
 use app\api\validate\User as UserValidate;
 
+
+
+
+/**
+ * 用户
+ */
 class User extends Frontend
 {
     protected $noNeedLogin = ['checkIn', 'logout'];
@@ -39,8 +45,27 @@ class User extends Frontend
         ]);
     }
 
+
+
     /**
-     * 会员签入(登录和注册)
+     * 登录.
+     *
+     * @ApiTitle    (登录)
+     * @ApiSummary  (登录)
+     * @ApiMethod   (POST)
+     * @ApiHeaders  (name=token, type=string, required=true, description="请求的Token")
+     * @ApiParams   (name=tab, type=string, required=true, description="login")
+     * @ApiParams   (name="username", type="integer", required=true, description="username")
+     * @ApiParams   (name="password", type="integer", required=true, description="password")
+     * @ApiParams   (name="captcha", type="integer", required=true, description="captcha")
+     * @ApiParams   (name="captchaId", type="integer", required=true, description="captchaId")
+     * @ApiParams   (name="keep", type="boole", required=true, description="keep")
+     * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
+     * @ApiReturn   ({
+     * 'code':'1',
+     * 'msg':'返回成功'
+     * })
      */
     public function checkIn()
     {
@@ -50,13 +75,12 @@ class User extends Frontend
                 'routeName' => 'user'
             ], 302);
         }
-
+        $params = $this->request->post(['tab', 'email', 'mobile', 'username', 'password', 'keep', 'captcha', 'captchaId']);
         if ($this->request->isPost()) {
             $params = $this->request->post(['tab', 'email', 'mobile', 'username', 'password', 'keep', 'captcha', 'captchaId']);
             if ($params['tab'] != 'login' && $params['tab'] != 'register') {
                 $this->error(__('Unknown operation'));
             }
-
             $validate = new UserValidate();
             try {
                 $validate->scene($params['tab'])->check($params);

@@ -7,8 +7,26 @@ use ba\Random;
 use app\common\facade\Token;
 use app\common\controller\Api;
 
+/**
+ * 公共
+ */
 class Common extends Api
 {
+
+    /**
+     * 验证码（请直接再浏览器访问url）
+     *
+     * @ApiTitle    （验证码-请直接浏览器访问url，图片不显示,前端加载src地址）
+     * @ApiSummary  (验证码-)
+     * @ApiRoute    (/api/common/captcha/{id})
+     * @ApiMethod   (POST)
+     * @ApiParams  (name=id, type=string, required=true, description="唯一标识")    * @ApiReturnParams   (name="msg", type="string", required=true, sample="返回成功")
+     * @ApiReturnParams   (name="data", type="object", sample="{'user_id':'int','user_name':'string','profile':{'email':'string','age':'integer'}}", description="扩展数据返回")
+     * @ApiReturn   ({
+     * 'code':'1',
+     * 'msg':'返回成功'
+     * })
+     */
     public function captcha()
     {
         $captchaId = $this->request->request('id');
