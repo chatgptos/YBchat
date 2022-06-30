@@ -1,0 +1,15 @@
+export default {
+	"exhibition_id": "展会id",
+	"hall_name": "展区展厅名称",
+	"name": "展区展厅名称",
+	"booths_num": "展位数量",
+	"hall_map": "展区平面地图",
+	"hall_addr": "展区地址",
+	"map_height": "展区平面地图高度",
+	"modified": "修改时间",
+	"created": "创建时间",
+	"map_width": "展区平面地图宽度",
+	"is_recommend": "推荐",
+	"hall_namein": "展区编号",
+	"quick Search Fields": "",
+}

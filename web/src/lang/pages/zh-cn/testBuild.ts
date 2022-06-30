@@ -1,0 +1,17 @@
+export default {
+	"id": "ID",
+	"title": "标题",
+	"keyword_rows": "关键词",
+	"content": "内容",
+	"views": "浏览量",
+	"likes": "有帮助数",
+	"dislikes": "无帮助数",
+	"note_textarea": "备注",
+	"status": "状态",
+	"status 0": "隐藏",
+	"status 1": "正常",
+	"weigh": "权重",
+	"updatetime": "更新时间",
+	"createtime": "创建时间",
+	"quick Search Fields": "ID",
+}

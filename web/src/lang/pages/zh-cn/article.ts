@@ -1,0 +1,16 @@
+export default {
+	"article_id": "文章id",
+	"cat_id": "文章类别id",
+	"title": "文章标题",
+	"content": "文章内容",
+	"author": "文章作者",
+	"author_email": "作者email",
+	"article_type": "文章类型",
+	"is_open": "是否开放",
+	"add_time": "创建时间",
+	"file_url": "文章附件url",
+	"link": "原文链接地址",
+	"description": "描述",
+	"order_num": "文章排序",
+	"quick Search Fields": "",
+}
