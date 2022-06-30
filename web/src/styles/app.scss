@@ -1,0 +1,187 @@
+/* 基本样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none !important;
+}
+
+html,
+body,
+#app {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--color-bg-1);
+    font-size: 14px;
+    overflow: hidden;
+    position: relative;
+}
+
+// 阿里 iconfont Symbol引用css
+.iconfont-icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.w100 {
+    width: 100% !important;
+}
+.h100 {
+    height: 100% !important;
+}
+.ba-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.default-main {
+    margin: var(--main-space) var(--main-space) 60px var(--main-space);
+}
+.zoom-handle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: -10px;
+    right: -10px;
+    cursor: se-resize;
+}
+.block-help {
+    display: block;
+    color: #909399;
+    font-size: 13px;
+    line-height: 16px;
+    padding-top: 5px;
+}
+
+/* 表格-s */
+.ba-table-box {
+    border-radius: var(--el-border-radius-round);
+}
+.ba-table-alert {
+    background-color: #e8edf0 !important;
+    border: 1px solid #f6f6f6;
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+/* 表格-e */
+
+/* 新增/编辑表单-s */
+.ba-operate-dialog {
+    min-width: 400px;
+    overflow: hidden;
+    border-radius: var(--el-border-radius-base);
+}
+.ba-operate-dialog .el-dialog__header {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-bg-1);
+}
+.ba-operate-dialog .el-dialog__body {
+    padding-top: 0;
+    padding-bottom: 52px;
+}
+.ba-operate-dialog .el-dialog__footer {
+    padding: 10px var(--el-dialog-padding-primary);
+    box-shadow: var(--el-box-shadow);
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+}
+.ba-operate-form {
+    padding-top: 30px;
+}
+.ba-table-form-scrollbar {
+    height: 60vh;
+    max-height: 60vh;
+}
+/* 新增/编辑表单-e */
+
+/* 全局遮罩-s */
+.ba-layout-shade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999990;
+}
+/* 全局遮罩-e */
+
+/* 图片上传预览-s */
+.img-preview-dialog .el-dialog__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        max-width: 100%;
+    }
+}
+/* 图片上传预览-e */
+
+/* 页面切换动画-s */
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+    will-change: transform;
+    transition: all 0.3s ease;
+}
+// slide-right
+.slide-right-enter-from {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+.slide-right-leave-to {
+    opacity: 0;
+    transform: translateX(20px);
+}
+// slide-left
+.slide-left-enter-from {
+    @extend .slide-right-leave-to;
+}
+.slide-left-leave-to {
+    @extend .slide-right-enter-from;
+}
+/* 页面切换动画-e */
+
+/* 会员中心相关-s */
+.frontend-footer-brother {
+    min-height: calc(100vh - 120px);
+}
+.user-views {
+    padding-left: 15px;
+    .user-views-card {
+        margin-bottom: 15px;
+    }
+}
+/* 会员中心-e */
+
+/* 自适应-s */
+@media screen and (max-width: 768px) {
+    .xs-hidden {
+        display: none;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .ba-operate-dialog .el-dialog__body {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+@media screen and (max-width: 991px) {
+    .user-views {
+        padding: 0;
+    }
+}
+/* 自适应-e */

@@ -1,0 +1,17 @@
+export default {
+	"id": "id",
+	"title": "title",
+	"keyword_rows": "keyword_rows",
+	"content": "content",
+	"views": "views",
+	"likes": "likes",
+	"dislikes": "dislikes",
+	"note_textarea": "note_textarea",
+	"status": "status",
+	"status 0": "status 0",
+	"status 1": "status 1",
+	"weigh": "weigh",
+	"updatetime": "updatetime",
+	"createtime": "createtime",
+	"quick Search Fields": "id",
+}

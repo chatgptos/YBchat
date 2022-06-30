@@ -1,0 +1,171 @@
+<template>
+    <!-- 对话框表单 -->
+    <el-dialog
+        custom-class="ba-operate-dialog"
+        :close-on-click-modal="false"
+        :model-value="baTable.form.operate ? true : false"
+        @close="baTable.toggleForm"
+    >
+        <template #header>
+            <div class="title" v-drag="['.ba-operate-dialog', '.el-dialog__header']" v-zoom="'.ba-operate-dialog'">
+                {{ baTable.form.operate ? t(baTable.form.operate) : '' }}
+            </div>
+        </template>
+        <el-scrollbar v-loading="baTable.form.loading" class="ba-table-form-scrollbar">
+            <div
+                class="ba-operate-form"
+                :class="'ba-' + baTable.form.operate + '-form'"
+                :style="'width: calc(100% - ' + baTable.form.labelWidth! / 2 + 'px)'"
+            >
+                <el-form
+                    v-if="!baTable.form.loading"
+                    ref="formRef"
+                    @keyup.enter="baTable.onSubmit(formRef)"
+                    :model="baTable.form.items"
+                    label-position="right"
+                    :label-width="baTable.form.labelWidth + 'px'"
+                    :rules="rules"
+                >
+                    <FormItem
+                        :label="t('security.sensitiveData.Rule name')"
+                        type="string"
+                        v-model="baTable.form.items!.name"
+                        prop="name"
+                        :placeholder="t('security.sensitiveData.The rule name helps to identify the modified data later')"
+                    />
+                    <FormItem
+                        :label="t('security.sensitiveData.controller')"
+                        type="select"
+                        v-model="baTable.form.items!.controller"
+                        prop="controller"
+                        :data="{ content: baTable.form.extend!.controllerList }"
+                        :placeholder="
+                            t('security.sensitiveData.The data listening mechanism will monitor the modification operations under this controller')
+                        "
+                    />
+                    <FormItem
+                        :label="t('security.sensitiveData.Corresponding data sheet')"
+                        type="select"
+                        v-model="baTable.form.items!.data_table"
+                        prop="data_table"
+                        :data="{ content: baTable.form.extend!.tableList }"
+                        :input-attr="{ onChange: baTable.onTableChange }"
+                    />
+                    <FormItem
+                        :label="t('security.sensitiveData.Data table primary key')"
+                        type="string"
+                        v-model="baTable.form.items!.primary_key"
+                        prop="primary_key"
+                    />
+                    <hr class="form-hr" />
+
+                    <FormItem
+                        :label="t('security.sensitiveData.Sensitive fields')"
+                        type="selects"
+                        v-model="baTable.form.items!.data_fields"
+                        :key="baTable.form.extend!.fieldSelectKey"
+                        prop="data_fields"
+                        :data="{ content: baTable.form.extend!.fieldSelect }"
+                        :input-attr="{ onChange: onFieldChange }"
+                        v-loading="baTable.form.extend!.fieldLoading"
+                    />
+
+                    <FormItem
+                        v-for="item in state.dataFields"
+                        :label="item.name"
+                        type="string"
+                        v-model="item.value"
+                        :placeholder="t('security.sensitiveData.Filling in field notes helps you quickly identify fields later')"
+                    />
+
+                    <hr class="form-hr" />
+                    <FormItem
+                        :label="t('state')"
+                        type="radio"
+                        v-model="baTable.form.items!.status"
+                        prop="status"
+                        :data="{ content: { '0': t('Disable'), '1': t('Enable') } }"
+                    />
+                </el-form>
+            </div>
+        </el-scrollbar>
+        <template #footer>
+            <div :style="'width: calc(100% - ' + baTable.form.labelWidth! / 1.8 + 'px)'">
+                <el-button @click="baTable.toggleForm('')">{{ t('Cancel') }}</el-button>
+                <el-button v-blur :loading="baTable.form.submitLoading" @click="baTable.onSubmit(formRef)" type="primary">
+                    {{ baTable.form.operateIds && baTable.form.operateIds.length > 1 ? t('Save and edit next item') : t('Save') }}
+                </el-button>
+            </div>
+        </template>
+    </el-dialog>
+</template>
+
+<script setup lang="ts">
+import { reactive, ref, inject } from 'vue'
+import { useI18n } from 'vue-i18n'
+import type { sensitiveDataClass, DataFields } from './index'
+import FormItem from '/@/components/formItem/index.vue'
+import type { ElForm, FormItemRule } from 'element-plus'
+import { buildValidatorData } from '/@/utils/validate'
+
+const formRef = ref<InstanceType<typeof ElForm>>()
+const baTable = inject('baTable') as sensitiveDataClass
+
+const { t } = useI18n()
+
+const state: {
+    dataFields: DataFields[]
+} = reactive({
+    dataFields: [],
+})
+
+const rules: Partial<Record<string, FormItemRule[]>> = reactive({
+    name: [buildValidatorData('required', t('security.sensitiveData.Rule name'))],
+    controller: [buildValidatorData('required', '', 'change', t('Please select field', { field: t('security.sensitiveData.controller') }))],
+    data_table: [buildValidatorData('required', '', 'change', t('Please select field', { field: t('security.sensitiveData.data sheet') }))],
+    primary_key: [buildValidatorData('required', t('security.sensitiveData.Data table primary key'), 'change')],
+    data_fields: [buildValidatorData('required', '', 'blur', t('Please select field', { field: t('security.sensitiveData.Sensitive fields') }))],
+})
+
+/**
+ * 敏感数据字段更新
+ * 保留原始输入，而又需要去掉已删除的字段
+ */
+const onFieldChange = (val: string[]) => {
+    let dataFields: DataFields[] = []
+    for (const key in val) {
+        dataFields[key] =
+            typeof state.dataFields[key] != 'undefined'
+                ? state.dataFields[key]
+                : {
+                      name: val[key],
+                      value: baTable.form.extend!.fieldlist[val[key]] ?? '',
+                  }
+    }
+    state.dataFields = dataFields
+}
+
+const getDataFields = () => {
+    return state.dataFields
+}
+
+const setDataFields = (dataFields: DataFields[]) => {
+    state.dataFields = dataFields
+}
+
+defineExpose({
+    getDataFields,
+    setDataFields,
+})
+</script>
+
+<style scoped lang="scss">
+.ba-el-radio {
+    margin-bottom: 10px;
+}
+.form-hr {
+    border-color: #dcdfe6;
+    border-style: solid;
+    margin-bottom: 16px;
+}
+</style>

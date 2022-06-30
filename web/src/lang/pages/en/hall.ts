@@ -1,0 +1,15 @@
+export default {
+	"exhibition_id": "exhibition_id",
+	"hall_name": "hall_name",
+	"name": "name",
+	"booths_num": "booths_num",
+	"hall_map": "hall_map",
+	"hall_addr": "hall_addr",
+	"map_height": "map_height",
+	"modified": "modified",
+	"created": "created",
+	"map_width": "map_width",
+	"is_recommend": "is_recommend",
+	"hall_namein": "hall_namein",
+	"quick Search Fields": "id",
+}
