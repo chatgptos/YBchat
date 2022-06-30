@@ -15,7 +15,7 @@ class Index extends Frontend
         parent::initialize();
     }
     /**
-     * 首页
+     * 首页接口
      *
      * @ApiSummary  (flbooth 获取首页、应用、展商)
      * @ApiMethod   (GET)
