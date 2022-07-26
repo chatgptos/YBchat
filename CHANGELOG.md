@@ -1,4 +1,6 @@
-### [fladmin 更新日志](https://gitee.com/wonderful-code/fladmin)
+### [fladmin 更新日志](https://gitee.com/phalconer/fladminvue.git)
+
+FlAdmin 版权归 © 蜂雷 京ICP证030173号 科权科技（上海）有限公司 所有
 
 🔥🔥基于 Vue3.x setup + ThinkPHP6 + TypeScript + Vite + Pinia + Element Plus等流行技术栈的后台管理系统，
 
