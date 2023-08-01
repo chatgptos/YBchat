@@ -40,7 +40,7 @@ Github: https://github.com/chatgptos/YBchat.git
 
 感谢以下的项目,排名不分先后
 
-ThinkPHP：http://www.python.org 
+python：http://www.python.org 
 
 
 ## 版权信息
