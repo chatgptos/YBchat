@@ -3,7 +3,7 @@
   <a title="Chinese" href="../README.md">简体中文</a> | English | <a title="Japanese" href="README_ja.md">日本語</a>
 </div>
 
-<h1 align="center">川虎 Chat 🐯 Chuanhu Chat</h1>
+<h1 align="center">YB Chat 🐯 Chuanhu Chat</h1>
 <div align="center">
   <a href="https://github.com/GaiZhenBiao/ChuanhuChatGPT">
     <img src="https://github.com/GaiZhenbiao/ChuanhuChatGPT/assets/70903329/aca3a7ec-4f1d-4667-890c-a6f47bf08f63" alt="Logo" height="156">

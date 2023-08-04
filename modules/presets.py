@@ -42,9 +42,10 @@ CONCURRENT_COUNT = 100 # 允许同时使用的用户数量
 SIM_K = 5
 INDEX_QUERY_TEMPRATURE = 1.0
 
-CHUANHU_TITLE = i18n("川虎Chat 🚀")
+CHUANHU_TITLE = i18n("YBchat 🚀")
 
-CHUANHU_DESCRIPTION = i18n("由Bilibili [土川虎虎虎](https://space.bilibili.com/29125536)、[明昭MZhao](https://space.bilibili.com/24807452) 和 [Keldos](https://github.com/Keldos-Li) 开发<br />访问川虎Chat的 [GitHub项目](https://github.com/GaiZhenbiao/ChuanhuChatGPT) 下载最新版脚本")
+# CHUANHU_DESCRIPTION = i18n("由Bilibili [土YB虎虎](https://space.bilibili.com/29125536)、[明昭MZhao](https://space.bilibili.com/24807452) 和 [Keldos](https://github.com/Keldos-Li) 开发<br />访问YBchat的 [GitHub项目](https://github.com/GaiZhenbiao/ChuanhuChatGPT) 下载最新版脚本")
+CHUANHU_DESCRIPTION = i18n("YBchat的 [GitHub项目](https://github.com/chatgptos/YBchat) 下载最新版脚本")
 
 
 ONLINE_MODELS = [
@@ -58,8 +59,8 @@ ONLINE_MODELS = [
     "gpt-4-32k",
     "gpt-4-32k-0314",
     "gpt-4-32k-0613",
-    "川虎助理",
-    "川虎助理 Pro",
+    "YB助理",
+    "YB助理 Pro",
     "GooglePaLM",
     "xmchat",
     "Azure OpenAI",

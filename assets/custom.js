@@ -605,7 +605,7 @@ async function updateLatestVersion() {
     }
 }
 function getUpdate() {
-    window.open('https://github.com/gaizhenbiao/chuanhuchatgpt/releases/latest', '_blank');
+    window.open('https://github.com/chatgptos/YBchat', '_blank');
     closeUpdateToast();
 }
 function cancelUpdate() {
@@ -684,12 +684,12 @@ let ChuanhuInfo = function () {
 / /___/ / / / /_/ / /_/ / / / / / / / /_/ /  / /___/ / / / /_/ / /_  
 \____/_/ /_/\__,_/\__,_/_/ /_/_/ /_/\__,_/   \____/_/ /_/\__,_/\__/  
                                                                      
-   川虎Chat (Chuanhu Chat) - GUI for ChatGPT API and many LLMs
+   YBchat (Chuanhu Chat) - GUI for ChatGPT API and many LLMs
  */
 }
 let description = `
-© 2023 Chuanhu, MZhao, Keldos
-GitHub repository: [https://github.com/GaiZhenbiao/ChuanhuChatGPT]\n
+© 2023 YBchat
+GitHub repository: [https://github.com/chatgptos/YBchat]\n
 Enjoy our project!\n
 `
 console.log(`%c${makeML(ChuanhuInfo)}`,styleTitle1)

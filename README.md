@@ -3,7 +3,7 @@
   简体中文 | <a title="English" href="./readme/README_en.md">English</a> | <a title="Japanese" href="./readme/README_ja.md">日本語</a>
 </div>
 
-<h1 align="center">川虎 Chat 🐯 Chuanhu Chat</h1>
+<h1 align="center">YB Chat 🐯 Chuanhu Chat</h1>
 <div align="center">
   <a href="https://github.com/GaiZhenBiao/ChuanhuChatGPT">
     <img src="https://github.com/GaiZhenbiao/ChuanhuChatGPT/assets/70903329/aca3a7ec-4f1d-4667-890c-a6f47bf08f63" alt="Logo" height="156">
@@ -87,7 +87,7 @@ pip install -r requirements.txt
 python ChuanhuChatbot.py
 ```
 
-一个浏览器窗口将会自动打开，此时您将可以使用 **川虎Chat** 与ChatGPT或其他模型进行对话。
+一个浏览器窗口将会自动打开，此时您将可以使用 **YBchat** 与ChatGPT或其他模型进行对话。
 
 > **Note**
 >
